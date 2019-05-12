@@ -161,6 +161,35 @@ void e_lfe()
         }
     }
 }
+///////////liste film par adherent /////
+
+void e_ae()
+{
+    int i = 0;
+    Emprunte e_tmp;
+    Adherent a_tmp;
+    FILE *f = fopen("empruntes", "rb");//ouvir le fichier fname
+    FILE *_f = fopen("adherents", "rb");
+    if (!f)
+    {
+        printf("Unable to open file empruntes");
+    }
+    else
+    {
+        FILE *p = fopen("tmp.bin", "wb");                 //creer un autre fichier pour
+        while (fread(&e_tmp, sizeof(Emprunte), 1, f) != NULL) //searching in all the element of the file
+        {
+            while (fread(&a_tmp, sizeof(Adherent), 1, _f) != NULL) //searching in all the element of the file
+            {
+                if (a_tmp.code_adh==e_tmp.id_ad)
+                {
+                    printf("%s.\n\n",a_tmp.nom_prenom);
+                    i = 1;
+                }
+            }
+        }
+    }
+}
 /////////// Ajout film /////////////////
 
 void m_add(Film movie)
