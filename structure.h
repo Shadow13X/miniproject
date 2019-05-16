@@ -1,3 +1,5 @@
+#include <stdio.h>
+#include<stdlib.h>
 typedef struct
 {
     int j,m,a;
@@ -27,8 +29,9 @@ typedef struct
 typedef struct
 {
     int code_adh;
-    char nom_prenom[50];
-    int phone;
+    char nom[20];
+    char prenom[20];
+    char phone[20];
     char *adresse;
     char categorie;
 }Adherent;
